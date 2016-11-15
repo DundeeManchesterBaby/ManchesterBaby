@@ -1,0 +1,5 @@
+class Baby{
+ private:
+
+ public:
+};
