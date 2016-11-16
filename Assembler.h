@@ -7,7 +7,7 @@ using namespace std;
 class Assembler{
  private:
   //Remember all Binary numbers are Big-Endian (100 = 1, 110 = 2)
-  void decimalToBinary();
+  void decimalToBinary(int number);
   void binaryToDecimal();
   
   //Binary value of operator is equal to the index of the string in the vector.
