@@ -1,10 +1,16 @@
 #include "Assembler.h"
 #include <string>
 
-using namepsace std;
+using namespace std;
 
-int* Assembler::decimalToBinary(int number){
-  int* binary = new int[] {0,0,0,0,0,0,0,0}; //array to store 1s + 0s, currently 8bit number
+Assembler::Assembler(){
+  symbolTable = {"", "", "", "", ""};
+}
+
+bitset<8> Assembler::decimalToBinary(int number){
+  bitset<8> binary;
+  binary.reset();
+  //array to store 1s + 0s, currently 8bit number
   int rem;
   int num = number;
   
@@ -22,21 +28,28 @@ int* Assembler::decimalToBinary(int number){
   }
 }
 
+int binaryToDecimal(bitset<3>){
+  return NULL;
+}
+
+void convertLine();
+
 void Assembler::read(string fileName){
   string currentLine;
   ifstream fileStream;
   fileStream.open(fileName);
   
   while(getline(fileStream,currentLine){
-    //loop through the file, storing lines to be implemented
-  }
-}
-
-void Assember::write(string fileName){
-  ofstream fileStream;
-  fileStream.open(fileName);
+      //loop through the file, storing lines to be implemented
+	}
+    }
   
-  for(//number of iterations){
-    fileStream << "Output data" << endl;
+  void Assembler::write(string fileName){
+    ofstream fileStream;
+    // fileStream.open(fileName);
+    
+    // for(//number of iterations){
+    //   fileStream << "Output data" << endl;
+    //}
   }
-}
+  

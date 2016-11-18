@@ -15,7 +15,7 @@ Baby::Baby(){
   int x = 0;
   while(x<=7){
     ((*this).*symbolTable[x])(op);
-    x++;
+    x++;b
     }
 }
 

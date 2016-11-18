@@ -1,15 +1,12 @@
 #include <vector>
 #include <iostream>
-#include <ifstream>
+#include <fstream>
+#include <bitset>
 
 using namespace std;
 
 class Assembler{
- private:
-  //Remember all Binary numbers are Big-Endian (100 = 1, 110 = 2)
-  int* decimalToBinary(int number);
-  void binaryToDecimal();
-  
+ private:  
   //Binary value of operator is equal to the index of the string in the vector.
   vector<string> symbolTable;
 
@@ -20,6 +17,11 @@ class Assembler{
   //Initialise the symbolTable with our default operators.
   Assembler();
 
+  //Remember all Binary numbers are Big-Endian (100 = 1, 110 = 2)
+  bitset<8> decimalToBinary(int number);
+  
+  int binaryToDecimal(bitset<32>);
+  
   //read input from text file
   void read(string fileName);
   
