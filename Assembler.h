@@ -14,7 +14,7 @@ class Assembler{
   vector<string> symbolTable;
 
   //convert assembly to machine code
-    void convertLine();
+    void convertLine(string* line);
   
  public:
   //Initialise the symbolTable with our default operators.
