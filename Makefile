@@ -5,8 +5,14 @@ GPP = g++
 CFLAGS= -g -Wall -Wextra -pedantic -std=c++11
 
 #The default build goal, running 'make' will run 'make all'
-.DEFAULT_GOAL
+.DEFAULT_GOAL: all
 
 all: $(wildcard *.cpp)
-	($GPP) $(CFLAGS) $(wildcard *.cpp)  
+	$(GPP) $(CFLAGS) $(wildcard *.cpp)  
+
+BabyTest: Baby.cpp baby_test.cpp
+
+
+AssemblerTest: Assembler.cpp A
+
 
