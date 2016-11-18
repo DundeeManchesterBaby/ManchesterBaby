@@ -94,6 +94,7 @@ char* Assembler::convertLine(string* line){
       writePos++;
     }
   }
+  return codeReturn;
 }
 
 void Assembler::read(string fileName){
