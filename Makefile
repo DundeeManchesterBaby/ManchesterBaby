@@ -1,3 +1,6 @@
+/* Authors: Ewan Mallinson - 150007735 Martin Learmont - */
+/* Module: AC21009 */
+
 #The Compiler we'll be using
 GPP = g++
 
