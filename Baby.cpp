@@ -1,7 +1,31 @@
 #include "Baby.h"
 #include <iostream>
+#include <cmath>
 
 using namespace std;
+
+template <size_t T>
+bitset<T> reverse(bitset<T> initialSet){
+  bitset<T> reversed = bitset<T>();
+  for(int i = 0; i < T; i++){
+    reversed[i] = initialSet[(T-1)-i];
+  }
+  return reversed;
+}
+
+template <size_t T>
+int binaryToDecimal(bitset<T> binary){
+  bool isNegative = binary[T-1];
+  int decimal = 0;
+  for(int i = 0; i < T-1; i++){
+    if (binary[i])
+      decimal += pow(2, i);
+  }
+  if(isNegative){
+    decimal *= -1; 
+  }
+  return decimal;
+}
 
 Baby::Baby(){
   //Create our store of empty registers.
@@ -83,7 +107,10 @@ void Baby::LDN(bitset<5> operand){
 
   //flip the positive/negative bit
   storeLine[31] = !storeLine[31];
+  accumulator = storeLine;
   cout << "LDN" << endl;
+  cout << "StoreLine: " << reverse(storeLine) << endl;
+  cout << binaryToDecimal(storeLine) << endl;
 }
 
 void Baby::STO(bitset<5> operand){
@@ -98,13 +125,15 @@ void Baby::SUB(bitset<5> operand){
   bitset<32> product  = bitset<32>();
   bool borrow = false;
   for(int i = 0; i <32; i++){
-    product[i] = accumulator[i] & !(storeLine[i] | borrow);
-
+    product[i] = accumulator[i] ^ storeLine[i] ^ borrow;
     //we borrow from the next bit if the accumulator bit is 0 and the borrow or storeLine bits are 1 or if the borrow and storeline bits are one
     borrow = (~accumulator[i] & (borrow | storeLine[i])) | storeLine[i] & borrow;
   }
-  accumulator = product;
+  cout << "Accumulator: " << reverse(accumulator) << endl;
   
+  accumulator = product;
+  cout << "StoreLine: " << reverse(storeLine) << endl; 
+  cout << "Product: " << reverse(product) << endl;
 }
 
 void Baby::CMP(bitset<5> operand){
