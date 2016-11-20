@@ -1,3 +1,6 @@
+/* Authors: Ewan Mallinson - 150007735 Martin Learmont - */
+/* Module: AC21009 */
+
 #include "Baby.h"
 #include "Assembler.h"
 #include <iostream>
