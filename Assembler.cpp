@@ -103,7 +103,6 @@ char* Assembler::convertLine(string* line){
   return codeReturn;
 }
 
->>>>>>> 82462f87cb9d9454f3b05c5eb3e34889fdee8614
 void Assembler::read(string fileName){
   string currentLine;
   ifstream fileStream;
