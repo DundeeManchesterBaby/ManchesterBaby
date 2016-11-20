@@ -33,7 +33,7 @@ bitset<32> Assembler::convertLine(string* line){
   int pos = 0;
   int counter = 0;
   int iValue = 0;
-  int writePos = 15;
+  int writePos = 31;
   int varCount = 0;
   bitset<32> codeReturn = new bitset<32>;
     for(counter=0; counter<8; counter++){
@@ -50,6 +50,11 @@ bitset<32> Assembler::convertLine(string* line){
       writePos--;
       codeReturn[writePos] = 0;
       writePos--;
+      pos = 4;
+      bitset<8> binaryAddress = getOperandAddress(line, pos);
+      for(int i=7; i>=0; i--, writePos--){
+        codeReturn[writePos] = binaryAddress[i];
+      }
     }
     else if(iValue == 1){
       codeReturn[writePos] = 1;
@@ -58,6 +63,11 @@ bitset<32> Assembler::convertLine(string* line){
       writePos--;
       codeReturn[writePos] = 0;
       writePos--;
+      pos = 4;
+      bitset<8> binaryAddress = getOperandAddress(line, pos);
+      for(int i=7; i>=0; i--, writePos--){
+        codeReturn[writePos] = binaryAddress[i];
+      }
     }
     else if(iValue == 2){
       codeReturn[writePos]) = 0;
@@ -66,6 +76,10 @@ bitset<32> Assembler::convertLine(string* line){
       writePos--;
       codeReturn[writePos] = 0;
       writePos--;
+      bitset<8> binaryAddress = getOperandAddress(line, pos);
+      for(int i=7; i>=0; i--, writePos--){
+        codeReturn[writePos] = binaryAddress[i];
+      }
     }
     else if(iValue == 3){
       codeReturn[writePos] = 1;
@@ -74,6 +88,11 @@ bitset<32> Assembler::convertLine(string* line){
       writePos--;
       codeReturn[writePos] = 0;
       writePos--;
+      pos = 4;
+      bitset<8> binaryAddress = getOperandAddress(line, pos);
+      for(int i=7; i>=0; i--, writePos--){
+        codeReturn[writePos] = binaryAddress[i];
+      }
     }
     else if(iValue == 4){
       codeReturn[writePos] = 0;
@@ -82,6 +101,11 @@ bitset<32> Assembler::convertLine(string* line){
       writePos--;
       codeReturn[writePos] = 1;
       writePos--;
+      pos = 4;
+      bitset<8> binaryAddress = getOperandAddress(line, pos);
+      for(int i=7; i>=0; i--, writePos--){
+        codeReturn[writePos] = binaryAddress[i];
+      }
     }
     else if(iValue == 5){
       codeReturn[writePos] = 0;
@@ -90,6 +114,11 @@ bitset<32> Assembler::convertLine(string* line){
       writePos--;
       codeReturn[writePos] = 1;
       writePos--;
+      pos = 4;
+      bitset<8> binaryAddress = getOperandAddress(line, pos);
+      for(int i=7; i>=0; i--, writePos--){
+        codeReturn[writePos] = binaryAddress[i];
+      }
     }
     else if(iValue == 6){
       codeReturn[writePos] = 1;
@@ -110,6 +139,7 @@ bitset<32> Assembler::convertLine(string* line){
       pos = tempPos + 4;
       while(line[pos] != " "){
         tempString = tempString + line[pos];
+        pos++;
       }
       symbolTable.push_back(tempString);
     }
@@ -126,7 +156,33 @@ void Assembler::read(string fileName){
     fileContents.push_back(currentLine);
   }
 }
-  
+
+  bitset<8> Assembler::getOperandAddress(string line, int pos){
+    string opName;
+    string tempString;
+    while(line[pos] != " "){
+      opName = opName + line[pos];
+      pos++;
+    }
+    for(int i=0; i<symbolTable.max_size; i++){
+      int z = 0;
+      while(symbolTable[i][z] != ":"){
+        tempString = tempString + symbolTable[i][z];
+        z++;
+      }
+      if(opName.compare(tempString){
+        z++;
+        string numString;
+        while(symbolTable[i][z] != ":"){
+          numString = numString + symbolTable[i][z];
+        }
+        int addressInt = numString;
+        bitset<8> addressBinary = decimalToBinary(addressInt);
+        return addressBinary;
+      }
+    }
+  }
+        
   void Assembler::write(string fileName){
     ofstream fileStream;
     fileStream.open(fileName);
