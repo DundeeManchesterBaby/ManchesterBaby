@@ -9,9 +9,10 @@ class Assembler{
  private:  
   //Binary value of operator is equal to the index of the string in the vector.
   vector<string> symbolTable;
+  vector<string> fileContents; //vector that stores the lines of the text file
 
   //convert assembly to machine code
-    char* convertLine(string* line);
+    bitset<16> convertLine(string* line);
   
  public:
   //Initialise the symbolTable with our default operators.
