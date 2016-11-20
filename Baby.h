@@ -1,7 +1,6 @@
 #ifndef _BABY
 #define _BABY
 
-#include "Assembler.h"
 #include <bitset>
 #include <vector>
 
@@ -20,17 +19,17 @@ private:
   
   //Store is a vector of 32 bit bitsets. This allows us to expand the store if needed
   vector<bitset<32>> store;
+
+  bool testFlop;
   
   bitset<5> getOperandAddress(bitset<32> instruction);
   bitset<32> fetchFromStore(bitset<5> address);
   bitset<3> getOperator(bitset<32> instruction);
 
-  bitset<32> incrementCI();
+  bitset<32> binaryAdder(bitset<32> arg1, bitset<32> arg2);
   int convertOpcodeToIndex(bitset<3> opcode);
   int convertAddressToIndex(bitset<5> address);
   int convertBinaryToDecimal(bitset<32> convertThis);
-  
-  bool stopped;
   
   //Define the function pointer we'll be storing in our instruction set array.
   typedef void (Baby::*instruction_ptr)(bitset<5>);
@@ -63,15 +62,20 @@ private:
  
  public:
   Baby();
+  Baby(vector<bitset<32>> registers);
 
   //accessors for displaying Register, control and status info.
   bitset<32> getCI();
   bitset<32> getPI();
-  bool isStopped();
+  bool stopped;
   void printRegisters();
-  
+
+  void increment();
+
   //increments the CI, stores the data CI now points to in the PI
   void fetch();
+
+  void decode();
 
   void execute(bitset<3> opcode, bitset<5> operandAddress);
 };

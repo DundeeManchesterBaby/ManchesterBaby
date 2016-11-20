@@ -11,7 +11,7 @@ all: $(wildcard *.cpp)
 	$(GPP) $(CFLAGS) $(wildcard *.cpp)  
 
 BabyTest: Baby.cpp baby_test.cpp
-
+	$(GPP) $(CFLAGS) Baby.cpp baby_test.cpp
 
 AssemblerTest: Assembler.cpp A
 
