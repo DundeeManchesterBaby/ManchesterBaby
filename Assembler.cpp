@@ -28,7 +28,7 @@ bitset<8> Assembler::decimalToBinary(int number){
   }
 }
 
-bitset<32> Assembler::convertLine(string* line){
+bitset<32> Assembler::convertLine(string line){
   string instructions[8] = {"JMP", "JRP", "LDN", "STO", "SUB", "CMP", "STP", "VAR"};
   int pos = 0;
   int counter = 0;
