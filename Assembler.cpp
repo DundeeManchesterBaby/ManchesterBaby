@@ -152,7 +152,6 @@ bitset<32> Assembler::convertLine(string line){
         }
         tempString = tempString + ":" + to_string(varCount) + ":";
         pos = tempPos + 4;
-	tempNum = "";
         while(line[pos] != ' '){
           tempNum = tempNum + line[pos];
           pos++;
