@@ -136,9 +136,10 @@ bitset<32> Assembler::convertLine(string line){
     }
     else if(iValue == 7){
       string tempString;
-      string tempNum = "0";
+      string tempNum;
       if(pos == 0){
-        tempString = tempString + ":" + to_string(varCount) + ":";
+        tempString = tempString + ":" + to_string(varCount) + ":" + "0";
+	tempNum = "0";
         symbolTable.push_back(tempString);
 	varCount++;
       }
