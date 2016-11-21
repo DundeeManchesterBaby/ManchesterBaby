@@ -1,3 +1,6 @@
+/* Authors: Ewan Mallinson - 150007735 Martin Learmont - */
+/* Module: AC21009 Team 20*/
+
 #include <vector>
 #include <iostream>
 #include <fstream>
@@ -9,10 +12,13 @@ class Assembler{
  private:  
   //Binary value of operator is equal to the index of the string in the vector.
   vector<string> symbolTable;
+  vector<string> fileContents; //vector that stores the lines of the text file
 
   //convert assembly to machine code
-    char* convertLine(string* line);
+  bitset<32> convertLine(string line);
   
+  string getOperandAddress(string line, int pos);
+ 
  public:
   //Initialise the symbolTable with our default operators.
   Assembler();
