@@ -10,14 +10,14 @@ Assembler::Assembler(){
   symbolTable = vector<string>();
 }
 
-bitset<8> Assembler::decimalToBinary(int number){
-  bitset<8> binary;
+bitset<32> Assembler::decimalToBinary(int number){
+  bitset<32> binary;
   binary.reset();
   //array to store 1s + 0s, currently 8bit number
   int rem;
   int num = number;
   
-  for(int i=7; i>=0; i--){
+  for(int i=31; i>=0; i--){
     if(num == 1){
       binary[i] = 1;
       return binary;
@@ -152,7 +152,6 @@ bitset<32> Assembler::convertLine(string line){
         }
         tempString = tempString + ":" + to_string(varCount) + ":";
         pos = tempPos + 4;
-	tempNum = "";
         while(line[pos] != ' '){
           tempNum = tempNum + line[pos];
           pos++;
@@ -162,9 +161,8 @@ bitset<32> Assembler::convertLine(string line){
 	varCount++;
       }
     }
-    int t = stoi(tempNum);
-  bitset<8> binNum = decimalToBinary(t);
-  for(int i=7; i>=0; i--){
+  bitset<32> binNum = decimalToBinary(stoi(tempNum));
+  for(int i=31; i>=0; i--){
     codeReturn[i] = binNum[i];
   }
   return codeReturn;
@@ -202,7 +200,7 @@ void Assembler::read(string fileName){
           z++;
         }
         int addressInt = stoi(numString);
-        bitset<8> addressBinary = decimalToBinary(addressInt);
+        bitset<32> addressBinary = decimalToBinary(addressInt);
 	string tempString = addressBinary.to_string();
         return tempString;
       }
@@ -214,7 +212,7 @@ void Assembler::read(string fileName){
           z++;
         }
         int addressInt = stoi(numString);
-        bitset<8> addressBinary = decimalToBinary(addressInt);
+        bitset<32> addressBinary = decimalToBinary(addressInt);
 	string tempString = addressBinary.to_string();
         return tempString;
       }
