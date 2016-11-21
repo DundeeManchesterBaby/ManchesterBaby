@@ -38,7 +38,7 @@ static bitset<32> Assembler::convertLine(string line){
   int iValue = 0;
   int writePos = 31;
   int varCount = 0;
-  bitset<32> codeReturn = new bitset<32>;
+  bitset<32> codeReturn;
     for(counter=0; counter<8; counter++){
       pos = line.find(instructions[counter], pos); //line.find() returns -1 if an instruction is not found
       if(pos != -1){
