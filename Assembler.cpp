@@ -19,14 +19,14 @@ bitset<8> Assembler::decimalToBinary(int number){
   
   for(int i=7; i>=0; i--){
     if(num == 1){
-      binary[] = 1;
+      binary[i] = 1;
       return binary;
     }
     else if(num == 0){
       return binary;
     }
     rem = num%2;
-    binary[] = rem;
+    binary[i] = rem;
     num = num/2;
   }
 }
