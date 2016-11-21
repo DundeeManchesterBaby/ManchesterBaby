@@ -40,7 +40,7 @@ bitset<32> Assembler::convertLine(string line){
   int varCount = 0;
   bitset<32> codeReturn;
     for(counter=0; counter<8; counter++){
-      pos = line.find(instructions[counter], pos); //line.find() returns -1 if an instruction is not found
+      pos = line.find(instructions[counter]); //line.find() returns -1 if an instruction is not found
       if(pos != -1){
         iValue = counter;
         counter = 8;
@@ -193,7 +193,7 @@ void Assembler::read(string fileName){
         string numString;
         while(symbolTable[i][z] != ':'){
           numString = numString + symbolTable[i][z];
-	  z++
+          z++
         }
         int addressInt = stoi(numString);
         bitset<8> addressBinary = decimalToBinary(addressInt);
