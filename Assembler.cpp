@@ -136,6 +136,7 @@ bitset<32> Assembler::convertLine(string line){
     }
     else if(iValue == 7){
       string tempString;
+      string tempNum = "0";
       if(pos == 0){
         tempString = tempString + ":" + to_string(varCount) + ":";
         symbolTable.push_back(tempString);
@@ -150,14 +151,20 @@ bitset<32> Assembler::convertLine(string line){
         }
         tempString = tempString + ":" + to_string(varCount) + ":";
         pos = tempPos + 4;
+	tempNum = "";
         while(line[pos] != ' '){
-          tempString = tempString + line[pos];
+          tempNum = tempNum + line[pos];
           pos++;
          }
+	tempString = tempString + tempNum;
         symbolTable.push_back(tempString);
 	varCount++;
       }
     }
+  bitset<8> binNum = decimalToBinary(stoi(tempNum));
+  for(int i=7; i>=0; i--){
+    codeReturn[i] = binNum[i];
+  }
   return codeReturn;
 }
 
