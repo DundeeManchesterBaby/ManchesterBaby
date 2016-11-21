@@ -1,4 +1,4 @@
-/* Authors: Ewan Mallinson - 150007735 Martin Learmont - */
+/* Authors: Ewan Mallinson - 150007735 Martin Learmont - 160016315 */
 /* Module: AC21009 Team 20*/
 
 #include "Assembler.h"
@@ -182,7 +182,7 @@ void Assembler::read(string fileName){
   string Assembler::getOperandAddress(string line, int pos){
     string opName;
     string tempString;
-    while(line[pos] != '\n'){
+    while(line[pos] != ' ' || line[pos] != '\n'){
       opName = opName + line[pos];
       pos++;
     }

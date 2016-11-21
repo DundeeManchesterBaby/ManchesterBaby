@@ -12,6 +12,6 @@ class Display{
  public:   
   Display();
   //Use █ for 1 and ░ for 0
-  void displayRegister();
+  void displayStore();
   
 };

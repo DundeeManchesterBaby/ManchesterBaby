@@ -1,4 +1,4 @@
-/* Authors: Ewan Mallinson - 150007735 Martin Learmont - */
+/* Authors: Ewan Mallinson - 150007735 Martin Learmont - 160016315 */
 /* Module: AC21009 Team 20*/
 
 #ifndef _BABY
@@ -9,21 +9,12 @@
 
 using namespace std;
 
+template <size_t T>
+bitset<T> reverse(bitset<T> initialSet);
+
 class Baby {
 private:
-  //Control Instruction, Incremented before fetching the instruction stores the address of the next 
-  bitset<32> CI;
 
-  //Present Instruction. 
-  bitset<32> PI;
-  
-  //Holds the results of our operation. All
-  bitset<32> accumulator;
-  
-  //Store is a vector of 32 bit bitsets. This allows us to expand the store if needed
-  vector<bitset<32>> store;
-
-  bool testFlop;
   
   bitset<5> getOperandAddress(bitset<32> instruction);
   bitset<32> fetchFromStore(bitset<5> address);
@@ -67,6 +58,21 @@ private:
   Baby();
   Baby(vector<bitset<32>> registers);
 
+
+  //Control Instruction, Incremented before fetching the instruction stores the address of the next 
+  bitset<32> CI;
+
+  //Present Instruction. 
+  bitset<32> PI;
+  
+  //Holds the results of our operation. All
+  bitset<32> accumulator;
+  
+  //Store is a vector of 32 bit bitsets. This allows us to expand the store if needed
+  vector<bitset<32>> store;
+
+  bool testFlop;
+  
   //accessors for displaying Register, control and status info.
   bitset<32> getCI();
   bitset<32> getPI();
