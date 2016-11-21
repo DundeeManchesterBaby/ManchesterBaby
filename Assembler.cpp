@@ -58,7 +58,7 @@ bitset<32> Assembler::convertLine(string line){
       writePos--;
       pos = 4;
       string binaryAddress = getOperandAddress(line, pos);
-      for(int i=31; i>=24; i--, writePos--){
+      for(int i=0; i<8; i++, writePos--){
         codeReturn[writePos] = binaryAddress[i];
       }
     }
@@ -71,7 +71,7 @@ bitset<32> Assembler::convertLine(string line){
       writePos--;
       pos = 4;
       string binaryAddress = getOperandAddress(line, pos);
-      for(int i=31; i>=24; i--, writePos--){
+      for(int i=0; i<8; i++, writePos--){
         codeReturn[writePos] = binaryAddress[i];
       }
     }
@@ -84,7 +84,7 @@ bitset<32> Assembler::convertLine(string line){
       writePos--;
       pos = 4;
       string binaryAddress = getOperandAddress(line, pos);
-      for(int i=31; i>=24; i--, writePos--){
+      for(int i=0; i<8; i++, writePos--){
         codeReturn[writePos] = binaryAddress[i];
       }
     }
@@ -97,7 +97,7 @@ bitset<32> Assembler::convertLine(string line){
       writePos--;
       pos = 4;
       string binaryAddress = getOperandAddress(line, pos);
-      for(int i=31; i>=24; i--, writePos--){
+      for(int i=0; i<8; i++, writePos--){
         codeReturn[writePos] = binaryAddress[i];
       }
     }
@@ -110,7 +110,7 @@ bitset<32> Assembler::convertLine(string line){
       writePos--;
       pos = 4;
       string binaryAddress = getOperandAddress(line, pos);
-      for(int i=31; i>=24; i--, writePos--){
+      for(int i=0; i<8; i++, writePos--){
         codeReturn[writePos] = binaryAddress[i];
       }
     }
@@ -123,7 +123,7 @@ bitset<32> Assembler::convertLine(string line){
       writePos--;
       pos = 4;
       string binaryAddress = getOperandAddress(line, pos);
-      for(int i=31; i>=24; i--, writePos--){
+      for(int i=0; i<8; i++, writePos--){
         codeReturn[writePos] = binaryAddress[i];
       }
     }
