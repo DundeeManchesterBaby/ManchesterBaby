@@ -1,5 +1,5 @@
-/* Authors: Ewan Mallinson - 150007735 Martin Learmont - */
-/* Module: AC21009 Team 20*/
+# Authors: Ewan Mallinson - 150007735 Martin Learmont - */
+# Module: AC21009 Team 20*/
 
 #The Compiler we'll be using
 GPP = g++

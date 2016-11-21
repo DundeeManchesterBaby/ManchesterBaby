@@ -190,7 +190,7 @@ void Assembler::read(string fileName){
         string numString;
         while(symbolTable[i][z] != ':'){
           numString = numString + symbolTable[i][z];
-          z++
+          z++;
         }
         int addressInt = stoi(numString);
         bitset<8> addressBinary = decimalToBinary(addressInt);
