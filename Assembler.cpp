@@ -182,7 +182,7 @@ void Assembler::read(string fileName){
   string Assembler::getOperandAddress(string line, int pos){
     string opName;
     string tempString;
-    while(line[pos] != '\n'){
+    while(line[pos] != ' '){
       opName = opName + line[pos];
       pos++;
     }
