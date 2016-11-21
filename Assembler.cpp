@@ -81,6 +81,7 @@ bitset<32> Assembler::convertLine(string line){
       writePos--;
       codeReturn[writePos] = 0;
       writePos--;
+      pos = 4;
       string binaryAddress = getOperandAddress(line, pos);
       for(int i=0; i<7; i++, writePos--){
         codeReturn[writePos] = binaryAddress[i];
