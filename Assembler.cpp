@@ -139,19 +139,21 @@ bitset<32> Assembler::convertLine(string line){
         tempString = tempString + ":" + to_string(varCount) + ":";
         symbolTable.push_back(tempString);
       }
-      int tempPos = pos;
-      pos = 0;
-      while(line[pos] != ':'){
-        tempString = tempString + line[pos];
-	pos++;
+      else{
+        int tempPos = pos;
+        pos = 0;
+        while(line[pos] != ':'){
+          tempString = tempString + line[pos];
+	  pos++;
+        }
+        tempString = tempString + ":" + to_string(varCount) + ":";
+        pos = tempPos + 4;
+        while(line[pos] != ' '){
+          tempString = tempString + line[pos];
+          pos++;
+         }
+        symbolTable.push_back(tempString);
       }
-      tempString = tempString + ":" + to_string(varCount) + ":";
-      pos = tempPos + 4;
-      while(line[pos] != ' '){
-        tempString = tempString + line[pos];
-        pos++;
-      }
-      symbolTable.push_back(tempString);
     }
   return codeReturn;
 }
