@@ -217,7 +217,7 @@ void Assembler::read(string fileName){
     fileStream.open(fileName);
     
     for(int i=0; i<fileContents.size(); i++){
-      fileStream << convertLine(fileContents[i]);
+      fileStream << convertLine(fileContents[i]) << endl;
     }
     fileStream.close();
   }
