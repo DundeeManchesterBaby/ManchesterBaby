@@ -24,7 +24,7 @@ class Assembler{
   Assembler();
 
   //Remember all Binary numbers are Big-Endian (100 = 1, 110 = 2)
-  bitset<8> decimalToBinary(int number);
+  bitset<32> decimalToBinary(int number);
   
   int binaryToDecimal(bitset<32>);
   
