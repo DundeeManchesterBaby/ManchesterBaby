@@ -30,11 +30,10 @@ int binaryToDecimal(bitset<T> binary){
 Baby::Baby(){
   //Create our store of empty registers.
   bitset<32> initialRegister;
-  store.resize(32, initialRegister);
-  
+  store.resize(32, initialRegister);  
   //This is only here for testing
   bitset<5> op;
-
+  stepExecution = false;
   stopped = false;
   testFlop = false;
   

@@ -67,7 +67,8 @@ private:
   //accessors for displaying Register, control and status info.
   bitset<32> getCI();
   bitset<32> getPI();
-  bool stopped;
+
+  bool stopped, stepExecution;
   void printRegisters();
 
   void increment();
