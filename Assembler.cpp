@@ -140,9 +140,10 @@ bitset<32> Assembler::convertLine(string line){
         symbolTable.push_back(tempString);
       }
       int tempPos = pos;
-      pos = (line.find(":", pos)-1);
-      for(int t=0; pos>=0; pos--){
+      pos = 0;
+      while(line[pos] != ':'){
         tempString = tempString + line[pos];
+	pos++;
       }
       tempString = tempString + ":" + to_string(varCount) + ":";
       pos = tempPos + 4;
