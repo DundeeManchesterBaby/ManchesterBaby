@@ -7,7 +7,7 @@
 using namespace std;
 
 Assembler::Assembler(){
-  
+  symbolTable = vector<string>();
 }
 
 bitset<8> Assembler::decimalToBinary(int number){
