@@ -138,6 +138,7 @@ bitset<32> Assembler::convertLine(string line){
       if(pos == 0){
         tempString = tempString + ":" + to_string(varCount) + ":";
         symbolTable.push_back(tempString);
+	varCount++;
       }
       else{
         int tempPos = pos;
@@ -153,6 +154,7 @@ bitset<32> Assembler::convertLine(string line){
           pos++;
          }
         symbolTable.push_back(tempString);
+	varCount++;
       }
     }
   return codeReturn;
