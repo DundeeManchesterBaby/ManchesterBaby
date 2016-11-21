@@ -40,7 +40,9 @@ bitset<32> Assembler::convertLine(string line){
   int varCount = 0;
   bitset<32> codeReturn;
     for(counter=0; counter<8; counter++){
-      pos = line.find(instructions[counter]); //line.find() returns -1 if an instruction is not found
+      cout << counter << endl;
+      pos = line.find(instructions[counter], 0); //line.find() returns -1 if an instruction is not found
+      cout << pos << endl;
       if(pos != -1){
         iValue = counter;
         counter = 8;
