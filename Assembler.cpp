@@ -31,7 +31,7 @@ bitset<8> Assembler::decimalToBinary(int number){
   }
 }
 
-static bitset<32> Assembler::convertLine(string line){
+bitset<32> Assembler::convertLine(string line){
   string instructions[8] = {"JMP", "JRP", "LDN", "STO", "SUB", "CMP", "STP", "VAR"};
   int pos = 0;
   int counter = 0;
@@ -54,8 +54,8 @@ static bitset<32> Assembler::convertLine(string line){
       codeReturn[writePos] = 0;
       writePos--;
       pos = 4;
-      bitset<8> binaryAddress = getOperandAddress(line, pos);
-      for(int i=7; i>=0; i--, writePos--){
+      string binaryAddress = getOperandAddress(line, pos);
+      for(int i=0; i<7; i++, writePos--){
         codeReturn[writePos] = binaryAddress[i];
       }
     }
@@ -67,20 +67,20 @@ static bitset<32> Assembler::convertLine(string line){
       codeReturn[writePos] = 0;
       writePos--;
       pos = 4;
-      bitset<8> binaryAddress = getOperandAddress(line, pos);
-      for(int i=7; i>=0; i--, writePos--){
+      string binaryAddress = getOperandAddress(line, pos);
+      for(int i=0; i<7; i++, writePos--){
         codeReturn[writePos] = binaryAddress[i];
       }
     }
     else if(iValue == 2){
-      codeReturn[writePos]) = 0;
+      codeReturn[writePos] = 0;
       writePos--;
       codeReturn[writePos] = 1;
       writePos--;
       codeReturn[writePos] = 0;
       writePos--;
-      bitset<8> binaryAddress = getOperandAddress(line, pos);
-      for(int i=7; i>=0; i--, writePos--){
+      string binaryAddress = getOperandAddress(line, pos);
+      for(int i=0; i<7; i++, writePos--){
         codeReturn[writePos] = binaryAddress[i];
       }
     }
@@ -92,8 +92,8 @@ static bitset<32> Assembler::convertLine(string line){
       codeReturn[writePos] = 0;
       writePos--;
       pos = 4;
-      bitset<8> binaryAddress = getOperandAddress(line, pos);
-      for(int i=7; i>=0; i--, writePos--){
+      string binaryAddress = getOperandAddress(line, pos);
+      for(int i=0; i<7; i++, writePos--){
         codeReturn[writePos] = binaryAddress[i];
       }
     }
@@ -105,8 +105,8 @@ static bitset<32> Assembler::convertLine(string line){
       codeReturn[writePos] = 1;
       writePos--;
       pos = 4;
-      bitset<8> binaryAddress = getOperandAddress(line, pos);
-      for(int i=7; i>=0; i--, writePos--){
+      string binaryAddress = getOperandAddress(line, pos);
+      for(int i=0; i<7; i++, writePos--){
         codeReturn[writePos] = binaryAddress[i];
       }
     }
@@ -118,8 +118,8 @@ static bitset<32> Assembler::convertLine(string line){
       codeReturn[writePos] = 1;
       writePos--;
       pos = 4;
-      bitset<8> binaryAddress = getOperandAddress(line, pos);
-      for(int i=7; i>=0; i--, writePos--){
+      string binaryAddress = getOperandAddress(line, pos);
+      for(int i=0; i<7; i++, writePos--){
         codeReturn[writePos] = binaryAddress[i];
       }
     }
@@ -135,12 +135,12 @@ static bitset<32> Assembler::convertLine(string line){
       string tempString;
       int tempPos = pos;
       pos = (line.find(":", pos)-1);
-      for(pos>=0; pos--){
+      for(int t=0; pos>=0; pos--){
         tempString = tempString + line[pos];
       }
-      tempString = tempString + ":" + varCount + ":";
+      tempString = tempString + ":" + to_string(varCount) + ":";
       pos = tempPos + 4;
-      while(line[pos] != " "){
+      while(line[pos] != ' '){
         tempString = tempString + line[pos];
         pos++;
       }
@@ -155,33 +155,34 @@ void Assembler::read(string fileName){
   fileStream.open(fileName);
   
   
-  while(getline(fileStream,currentLine){
+  while(getline(fileStream,currentLine)){
     fileContents.push_back(currentLine);
   }
 }
 
-  static bitset<8> Assembler::getOperandAddress(string line, int pos){
+  string Assembler::getOperandAddress(string line, int pos){
     string opName;
     string tempString;
-    while(line[pos] != " "){
+    while(line[pos] != ' '){
       opName = opName + line[pos];
       pos++;
     }
     for(int i=0; i<symbolTable.size(); i++){
       int z = 0;
-      while(symbolTable[i][z] != ":"){
+      while(symbolTable[i][z] != ':'){
         tempString = tempString + symbolTable[i][z];
         z++;
       }
-      if(opName.compare(tempString){
+      if(opName.compare(tempString)){
         z++;
         string numString;
-        while(symbolTable[i][z] != ":"){
+        while(symbolTable[i][z] != ':'){
           numString = numString + symbolTable[i][z];
         }
-        int addressInt = numString;
+        int addressInt = stoi(numString);
         bitset<8> addressBinary = decimalToBinary(addressInt);
-        return addressBinary;
+	string tempString = addressBinary.to_string();
+        return tempString;
       }
     }
   }
