@@ -15,9 +15,9 @@ class Assembler{
   vector<string> fileContents; //vector that stores the lines of the text file
 
   //convert assembly to machine code
-  static bitset<32> convertLine(string line);
+  bitset<32> convertLine(string line);
   
-  static void getOperandAddress(string line, int pos);
+  string getOperandAddress(string line, int pos);
  
  public:
   //Initialise the symbolTable with our default operators.
