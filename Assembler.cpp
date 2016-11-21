@@ -8,6 +8,7 @@ using namespace std;
 
 Assembler::Assembler(){
   symbolTable = vector<string>();
+  varCount = 0;
 }
 
 bitset<32> Assembler::decimalToBinary(int number){
@@ -37,7 +38,6 @@ bitset<32> Assembler::convertLine(string line){
   int counter = 0;
   int iValue = 0;
   int writePos = 31;
-  int varCount = 0;
   bitset<32> codeReturn;
     for(counter=0; counter<8; counter++){
       cout << counter << endl;
@@ -57,7 +57,7 @@ bitset<32> Assembler::convertLine(string line){
       writePos--;
       pos = 4;
       string binaryAddress = getOperandAddress(line, pos);
-      for(int i=0; i<8; i++, writePos--){
+      for(int i=0; i<5; i++, writePos--){
         codeReturn[writePos] = binaryAddress[i];
       }
     }
@@ -70,7 +70,7 @@ bitset<32> Assembler::convertLine(string line){
       writePos--;
       pos = 4;
       string binaryAddress = getOperandAddress(line, pos);
-      for(int i=0; i<8; i++, writePos--){
+      for(int i=0; i<5; i++, writePos--){
         codeReturn[writePos] = binaryAddress[i];
       }
     }
@@ -83,7 +83,7 @@ bitset<32> Assembler::convertLine(string line){
       writePos--;
       pos = 4;
       string binaryAddress = getOperandAddress(line, pos);
-      for(int i=0; i<8; i++, writePos--){
+      for(int i=0; i<5; i++, writePos--){
         codeReturn[writePos] = binaryAddress[i];
       }
     }
@@ -96,7 +96,7 @@ bitset<32> Assembler::convertLine(string line){
       writePos--;
       pos = 4;
       string binaryAddress = getOperandAddress(line, pos);
-      for(int i=0; i<8; i++, writePos--){
+      for(int i=0; i<5; i++, writePos--){
         codeReturn[writePos] = binaryAddress[i];
       }
     }
@@ -109,7 +109,7 @@ bitset<32> Assembler::convertLine(string line){
       writePos--;
       pos = 4;
       string binaryAddress = getOperandAddress(line, pos);
-      for(int i=0; i<8; i++, writePos--){
+      for(int i=0; i<5; i++, writePos--){
         codeReturn[writePos] = binaryAddress[i];
       }
     }
@@ -122,7 +122,7 @@ bitset<32> Assembler::convertLine(string line){
       writePos--;
       pos = 4;
       string binaryAddress = getOperandAddress(line, pos);
-      for(int i=0; i<8; i++, writePos--){
+      for(int i=0; i<5; i++, writePos--){
         codeReturn[writePos] = binaryAddress[i];
       }
     }
