@@ -31,7 +31,7 @@ bitset<8> Assembler::decimalToBinary(int number){
   }
 }
 
-bitset<32> Assembler::convertLine(string line){
+static bitset<32> Assembler::convertLine(string line){
   string instructions[8] = {"JMP", "JRP", "LDN", "STO", "SUB", "CMP", "STP", "VAR"};
   int pos = 0;
   int counter = 0;
@@ -160,14 +160,14 @@ void Assembler::read(string fileName){
   }
 }
 
-  bitset<8> Assembler::getOperandAddress(string line, int pos){
+  static bitset<8> Assembler::getOperandAddress(string line, int pos){
     string opName;
     string tempString;
     while(line[pos] != " "){
       opName = opName + line[pos];
       pos++;
     }
-    for(int i=0; i<symbolTable.max_size; i++){
+    for(int i=0; i<symbolTable.size(); i++){
       int z = 0;
       while(symbolTable[i][z] != ":"){
         tempString = tempString + symbolTable[i][z];
@@ -190,8 +190,9 @@ void Assembler::read(string fileName){
     ofstream fileStream;
     fileStream.open(fileName);
     
-    // for(//number of iterations){
-    //   fileStream << "Output data" << endl;
-    //}
+    for(int i=0; i<fileContents.size(); i++){
+      fileStream << convertLine(fileContents[i]);
+    }
+    fileStream.close();
   }
   
