@@ -38,6 +38,7 @@ bitset<32> Assembler::convertLine(string line){
   int iValue = 0;
   int writePos = 31;
   int varCount = 0;
+  string tempNum = "0";
   bitset<32> codeReturn;
     for(counter=0; counter<8; counter++){
       cout << counter << endl;
@@ -136,10 +137,9 @@ bitset<32> Assembler::convertLine(string line){
     }
     else if(iValue == 7){
       string tempString;
-      string tempNum;
+      tempNum = "0";
       if(pos == 0){
-        tempString = tempString + ":" + to_string(varCount) + ":" + "0";
-	tempNum = "0";
+        tempString = tempString + ":" + to_string(varCount) + ":";
         symbolTable.push_back(tempString);
 	varCount++;
       }
@@ -162,7 +162,8 @@ bitset<32> Assembler::convertLine(string line){
 	varCount++;
       }
     }
-  bitset<8> binNum = decimalToBinary(stoi(tempNum));
+    int t = stoi(tempNum);
+  bitset<8> binNum = decimalToBinary(t);
   for(int i=7; i>=0; i--){
     codeReturn[i] = binNum[i];
   }
