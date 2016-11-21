@@ -13,6 +13,7 @@ class Assembler{
   //Binary value of operator is equal to the index of the string in the vector.
   vector<string> symbolTable;
   vector<string> fileContents; //vector that stores the lines of the text file
+  int varCount;
 
   //convert assembly to machine code
   bitset<32> convertLine(string line);
