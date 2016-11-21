@@ -190,6 +190,7 @@ void Assembler::read(string fileName){
         string numString;
         while(symbolTable[i][z] != ':'){
           numString = numString + symbolTable[i][z];
+          z++
         }
         int addressInt = stoi(numString);
         bitset<8> addressBinary = decimalToBinary(addressInt);
@@ -216,7 +217,7 @@ void Assembler::read(string fileName){
     fileStream.open(fileName);
     
     for(int i=0; i<fileContents.size(); i++){
-      fileStream << convertLine(fileContents[i]);
+      fileStream << convertLine(fileContents[i]) << endl;
     }
     fileStream.close();
   }
