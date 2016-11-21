@@ -133,6 +133,10 @@ bitset<32> Assembler::convertLine(string line){
     }
     else if(iValue == 7){
       string tempString;
+      if(pos == 0){
+        tempString = tempString + ":" + to_string(varCount) + ":";
+        symbolTable.push_back(tempString);
+      }
       int tempPos = pos;
       pos = (line.find(":", pos)-1);
       for(int t=0; pos>=0; pos--){
@@ -175,6 +179,17 @@ void Assembler::read(string fileName){
       }
       if(opName.compare(tempString)){
         z++;
+        string numString;
+        while(symbolTable[i][z] != ':'){
+          numString = numString + symbolTable[i][z];
+        }
+        int addressInt = stoi(numString);
+        bitset<8> addressBinary = decimalToBinary(addressInt);
+	string tempString = addressBinary.to_string();
+        return tempString;
+      }
+      else{
+        z = 1;
         string numString;
         while(symbolTable[i][z] != ':'){
           numString = numString + symbolTable[i][z];
